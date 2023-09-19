@@ -1,12 +1,21 @@
 <template>
     <div>
-        <p>Produt details for {{ id }}</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolorum esse, labore incidunt expedita ad blanditiis provident quibusdam quam odio voluptatum veritatis. Non dolores quod recusandae rerum aliquam laborum neque!</p>
+        <ProductDetails :product="product" />
     </div>
 </template>
 
 <script setup>
+    definePageMeta({
+        layout: 'products'
+    })
     const { id } = useRoute().params
+
+    const url = "https://fakestoreapi.com/products/" + id
+    const { data: product} = await useFetch(url)
+
+    if (!product.value) {
+        throw createError({statusCode: 404, statusMessage: "Product not found"})
+    }
 </script>
 
 <style>
