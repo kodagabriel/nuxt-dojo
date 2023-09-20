@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         headers: {
             apikey: currencyKey
         }
-    })
+    }) 
 
     return data
 
