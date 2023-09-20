@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-const { data } = await useFetch('/api/currency/USD')
+const { data } = await useFetch('/api/currency/BRL')
 </script>
 
 <style scoped>
